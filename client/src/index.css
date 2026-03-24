@@ -1,0 +1,477 @@
+/* ==== Reset & base ==== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  overflow-y: auto;
+}
+
+/* ==== Variables de tema ==== */
+:root {
+  --bg: #f5f7fb;
+  --text: #1f2937;
+  --panel-bg: #ffffff;
+  --border: #d1d5db;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --success: #10b981;
+  --error: #ef4444;
+  --toast-bg: rgba(255, 255, 255, 0.95);
+  --toast-border: #e5e7eb;
+}
+
+:root.dark {
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --panel-bg: #111827;
+  --border: #374151;
+  --muted: #9ca3af;
+  --accent: #8b5cf6;
+  --accent-hover: #7c3aed;
+  --success: #22c55e;
+  --error: #f87171;
+  --toast-bg: rgba(17, 24, 39, 0.95);
+  --toast-border: #4b5563;
+}
+
+/* ==== Layout general ==== */
+.app-container {
+  display: grid;
+  grid-template-columns: 280px 1fr 350px;
+  min-height: 100vh;
+  gap: 10px;
+  padding: 10px;
+  background:
+    radial-gradient(circle at top, rgba(79, 70, 229, 0.18), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  overflow: hidden;
+}
+
+/* ==== Sidebar ==== */
+.sidebar {
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.section {
+  margin-bottom: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.03)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.dice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ==== Botones ==== */
+.btn {
+  background: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-small {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  color: var(--text);
+}
+
+.btn-small:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-small[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mini botones */
+.btn-mini {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.btn-mini:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ==== Inputs ==== */
+.input {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ==== Texto auxiliar ==== */
+.small-muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ==== Control de dados ==== */
+.dice-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==== Board principal ==== */
+.board {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+}
+
+/* === Toolbar del tablero === */
+.board-toolbar {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* === Área principal del tablero === */
+.board-stage {
+  position: relative;
+  flex: 1;
+  min-height: 480px;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+/* === Contenido multimedia === */
+.board-media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  transition: transform 0.25s ease;
+}
+
+.board-media:hover {
+  transform: scale(1.01);
+}
+
+/* === Tokens === */
+.tokens-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.token {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+.token:hover {
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.token:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* ==== Chat ==== */
+.chat-panel {
+  background: var(--panel-bg);
+  border-left: 1px solid var(--border);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+}
+
+.chat-messages {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  overflow-y: auto;
+  background: var(--bg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--panel-bg);
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 4px;
+}
+
+.chat-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ==== Mensajes especiales ==== */
+.chat-messages .dice-message {
+  background: rgba(79, 70, 229, 0.08);
+  border-left: 3px solid var(--accent);
+  padding-left: 6px;
+  border-radius: 4px;
+}
+
+.chat-messages .system-message {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ==== Audio panel ==== */
+.audio-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
+}
+
+.audio-controls input[type="range"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* ==== Toasts ==== */
+.toast {
+  background: var(--toast-bg);
+  border: 1px solid var(--toast-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+  min-width: 200px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Responsivo ==== */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 250px 1fr 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .sidebar,
+  .chat-panel {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .board {
+    overflow: hidden;
+  }
+}
+
+/* === FIX: permitir interacción con el contenido (video, imagen) bajo los tokens === */
+.tokens-layer {
+  pointer-events: none; /* deja pasar clics al contenido de debajo */
+}
+
+.tokens-layer .token {
+  pointer-events: auto; /* pero los tokens siguen siendo interactivos */
+}
+
+.user-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-list li {
+  font-size: 14px;
+}
+
+.user-list li::before {
+  content: "• ";
+  color: var(--accent);
+}
+
+/* === Animación del grid al colapsar paneles === */
+.app-container {
+  transition: grid-template-columns 0.25s ease;
+}
+
+/* Colapsado Sidebar */
+.app-container.no-sidebar {
+  grid-template-columns: 24px 1fr 350px;
+}
+
+/* Colapsado Chat */
+.app-container.no-chat {
+  grid-template-columns: 280px 1fr 24px;
+}
+
+/* Colapsado ambos */
+.app-container.no-sidebar.no-chat {
+  grid-template-columns: 24px 1fr 24px;
+}
+
+/* Botones del toggle */
+.panel-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: 0.2s;
+  font-size: 18px;
+}
+
+.panel-toggle-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+}
+
+.sidebar-collapsed,
+.chat-panel-collapsed {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cabeceras */
+.sidebar-header-row,
+.chat-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

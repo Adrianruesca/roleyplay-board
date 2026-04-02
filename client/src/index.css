@@ -475,3 +475,277 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.compendium-open-button {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.compendium-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.compendium-modal {
+  width: min(1200px, 95vw);
+  height: min(800px, 90vh);
+  background: #1e1e24;
+  color: #f5f5f5;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.compendium-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.compendium-header h2 {
+  margin: 0;
+}
+
+.compendium-header p {
+  margin: 4px 0 0;
+  opacity: 0.7;
+}
+
+.compendium-close-button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.compendium-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 0;
+  flex: 1;
+}
+
+.compendium-sidebar {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compendium-tab {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+}
+
+.compendium-tab.active {
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+}
+
+.compendium-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.compendium-toolbar {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.compendium-search {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.compendium-panel {
+  padding: 20px;
+  overflow: auto;
+  flex: 1;
+}
+
+.compendium-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compendium-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.compendium-card h4 {
+  margin: 0 0 8px;
+}
+
+.compendium-card p {
+  margin: 6px 0;
+}
+
+.compendium-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.compendium-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.npc-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.npc-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.compendium-select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.npc-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  min-height: 0;
+  flex: 1;
+}
+
+.npc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.npc-list-item {
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.npc-list-item.active {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.npc-list-item span {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.npc-detail {
+  overflow: auto;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.npc-detail h4 {
+  margin-top: 0;
+}
+
+.compendium-action-button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.compendium-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.compendium-action-button.secondary {
+  opacity: 0.85;
+}
+
+.npc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compendium-input,
+.compendium-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.compendium-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.compendium-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.compendium-toolbar-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.compendium-inline-error {
+  margin-top: 8px;
+}
